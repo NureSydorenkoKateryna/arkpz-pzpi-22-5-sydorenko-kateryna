@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Spots\FoodFlow.Modules.Spots.IntegrationEvents\FoodFlow.Modules.Spots.IntegrationEvents.csproj" />
+    <ProjectReference Include="..\FoodFlow.Modules.Users.Persistence\FoodFlow.Modules.Users.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\User\GetAll\" />
+    <Folder Include="Features\User\Get\" />
+  </ItemGroup>
+
+</Project>

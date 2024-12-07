@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <UserSecretsId>1292e999-d971-44d2-895e-1d977a978e83</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\FoodFlow.Common\FoodFlow.Common.csproj" />
+    <ProjectReference Include="..\..\Modules\Culinary\FoodFlow.Modules.Culinary.Api\FoodFlow.Modules.Culinary.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Measuremnets\FoodFlow.Modules.Measurements.Api\FoodFlow.Modules.Measurements.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Movements\FoodFlow.Modules.Movements.Api\FoodFlow.Modules.Movements.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Spots\FoodFlow.Modules.Spots.Api\FoodFlow.Modules.Spots.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Users\FoodFlow.Modules.Users.Api\FoodFlow.Modules.Users.Api.csproj" />
+  </ItemGroup>
+
+</Project>

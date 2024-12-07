@@ -1,0 +1,6 @@
+@FoodFlow.Bootstrapper_HostAddress = http://localhost:5201
+
+GET {{FoodFlow.Bootstrapper_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
