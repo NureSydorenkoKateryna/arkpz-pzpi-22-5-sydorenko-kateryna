@@ -1,0 +1,428 @@
+Харківський університет радіоелектроніки
+Факультет комп'ютерних наук
+Кафедра програмної інженерії
+
+
+
+ЗВІТ
+до приктичного заняття 2
+з дисципліни "Аналіз та рефакторінг коду"
+на тему: "Методи рефакторингу коду програмного забезпечення"
+
+
+
+
+Виконав ст. гр ПЗПІ-22-5
+Сидоренко Катерина Сергіївна
+
+Перевірив
+ст. викладач кафедри ПІ
+Сокорчук Ігор Петрович
+
+
+
+
+
+
+
+Харків 2024
+1 МЕТА
+
+     Ознайомитися з основним методам рефакторингу коду на основі реальних прикладів з їхніх власних програмних проєктів. Студенти повинні навчитися ідентифікувати проблеми в коді та використовувати відповідні методи рефакторингу для покращення його якості.
+     
+2 ЗАВДАННЯ
+     
+     Студент має вибрати три методи рефакторингу коду з книги Мартіна Фаулера «Refactoring. Improving the Design of Existing Code» і застосувати їх на прикладах власного коду. 
+   Для кожного методу рефакторингу потрібно:
+1. Описати проблему, яку вирішує обраний метод, зокрема недоліки початкового коду, такі як порушення принципів SOLID, технічний борг чи складність читання;
+2. Навести код до застосування методу, який демонструє початковий стан проблеми;
+3. Показати код після рефакторингу, де обраний метод вирішує проблему;
+4. Надати пояснення переваг використаного методу, наприклад, зменшення дублювання коду, покращення його читабельності, зниження рівня зв’язаності або забезпечення кращої підтримки в майбутньому.
+
+
+
+
+3 ХІД РОБОТИ
+
+     Рефакторинг є важливим етапом у процесі розробки програмного забезпечення. Це процес покращення структури коду без зміни його зовнішньої поведінки. Головна мета рефакторингу – забезпечити чистоту, читабельність і адаптивність коду, що дозволяє легше впроваджувати зміни та підтримувати проєкт у довгостроковій перспективі. У цій презентації буде розглянуто три методи рефакторингу, описаних у книзі Мартіна Фаулера «Refactoring. Improving the Design of Existing Code», а саме: Introduce Parameter Object, Hide Delegate і Introduce Local Extension.
+     Introduce Parameter Object. Опис проблеми: Коли метод має занадто багато параметрів, це ускладнює його читання, підтримку та тестування. Велика кількість параметрів збільшує ризик помилок через неправильну передачу даних і знижує зрозумілість коду. Переваги методу:
+Introduce Parameter Object дозволяє згрупувати пов'язані параметри в окремий клас, спрощуючи методи та їхній інтерфейс. Це підвищує читабельність, знижує ризик помилок та полегшує внесення змін. Такий підхід також спрощує тестування, адже параметри можна перевіряти окремо.
+     Hide Delegate. Опис проблеми: Коли метод напряму взаємодіє з делегатом чи іншими низькорівневими деталями реалізації, це збільшує зв’язаність і знижує інкапсуляцію. Зміни в делегаті можуть вплинути на всі місця використання, що ускладнює підтримку коду. Переваги методу:
+Hide Delegate приховує складність взаємодії з делегатом за вищим рівнем абстракції, наприклад, через сервіс або адаптер. Це зменшує зв’язаність, покращує інкапсуляцію, спрощує підтримку та підвищує тестованість. Такий підхід дозволяє зосередитись на логіці вищого рівня, уникаючи деталей нижчого рівня.
+     Introduce Local Extension. Опис проблеми: Існуючі класи, які не можна або не варто змінювати (наприклад, класи з зовнішніх бібліотек), іноді потребують додаткової функціональності. Пряме редагування таких класів порушує принцип відкритості/закритості (OCP). Переваги методу:
+Introduce Local Extension дозволяє додавати нову функціональність через створення локального розширення у вигляді підкласу або обгортки. Це забезпечує гнучкість, мінімізує ризики внесення помилок в основний код і зберігає існуючу поведінку. Нові можливості можна використовувати тільки там, де це потрібно, не впливаючи на глобальну структуру.
+     Застосування рефакторингу сприяє покращенню якості коду, забезпечуючи його чистоту, структурованість і легкість підтримки. Методи Introduce Parameter Object, Hide Delegate і Introduce Local Extension допомагають вирішити типові проблеми складності коду, забезпечуючи його гнучкість та адаптивність. Використання таких технік є невід'ємною частиною створення надійного й масштабованого програмного забезпечення. Приклади коду наведено у додатку А. Слайди презентації можна переглянути у додатку Б.
+     Послання на відео: https://youtu.be/JWPrf88XuEs 
+
+
+
+     
+     
+
+
+ВИСНОВКИ
+
+     Рефакторинг є важливим процесом, який дозволяє підвищити якість програмного забезпечення шляхом покращення його структури без змін зовнішньої поведінки. Завдяки використанню методів, таких як Introduce Parameter Object, Hide Delegate і Introduce Local Extension, можна зменшити складність коду, покращити його читабельність, забезпечити легшу підтримку та адаптивність до змін.
+     Кожен із розглянутих методів вирішує специфічні проблеми, пов'язані з повторюваністю, зв’язаністю або браком гнучкості. Використання цих технік у реальних проєктах допомагає створювати масштабовані, зручні для підтримки рішення, які відповідають сучасним вимогам до програмної інженерії. Рефакторинг не тільки знижує ризики виникнення помилок, але й сприяє розвитку навичок розробника, що позитивно впливає на якість всієї команди та продукту в цілому.
+
+
+ДОДАТОК А
+
+Приклади коду до та після рефакторингу
+
+  1 // Introduce parameter object
+  2
+  3 // BAD EXAMPLE
+  4 public async Task<(List<TestActivityDTO>, int)> GetUserActivityTests(
+  5     int userId,
+  6     Visibility? filterParam = null,
+  7     int pageNumber = 1,
+  8     int pageSize = 6,
+  9     string orderByProp = "test_id",
+ 10     string sortOrder = "asc",
+ 11     string serachParam = null)
+ 12 {
+ 13     string sqlExpression = "PagingActivity";
+ 14
+ 15     using (SqlConnection connection = new SqlConnection(_connectionString))
+ 16     {
+ 17         List<TestActivityDTO> tests = new();
+ 18         int totalRecords = 0;
+ 19         bool IsNextPageAvailable;
+ 20
+ 21         using (SqlCommand command = new SqlCommand(sqlExpression, connection))
+ 22         {
+ 23             command.CommandType = CommandType.StoredProcedure;
+ 24
+ 25             command.Parameters.AddWithValue("@PageNumber", pageNumber);
+ 26             command.Parameters.AddWithValue("@PageSize", pageSize);
+ 27             command.Parameters.AddWithValue("@OrderBy", orderByProp);
+ 28             command.Parameters.AddWithValue("@SortOrder", sortOrder);
+ 29             command.Parameters.AddWithValue("@UserId", userId);
+ 30             command.Parameters.AddWithValue("@FilterParam", filterParam != null ? filterParam : DBNull.Value);
+ 31             command.Parameters.AddWithValue("@SearchParam", !string.IsNullOrEmpty(serachParam) ? serachParam : DBNull.Value);
+ 32
+ 33             SqlParameter totalRecordsParam = new SqlParameter("@TotalRecords", SqlDbType.Int);
+ 34             totalRecordsParam.Direction = ParameterDirection.Output;
+ 35             command.Parameters.Add(totalRecordsParam);
+ 36
+ 37             connection.Open();
+ 38
+ 39             SqlDataReader reader = await command.ExecuteReaderAsync();
+ 40
+ 41             if (reader.HasRows)
+ 42             {
+ 43                 reader.Read();
+ 44                 totalRecords = (int)reader["TotalRecords"];
+ 45             }
+ 46             reader.NextResult();
+ 47             var columns = reader.GetColumnSchema();
+ 48
+ 49             while (reader.Read())
+ 50             {
+ 51                 TestActivityDTO test = new();
+ 52                 test.TestId = (int)reader["test_id"];
+ 53                 test.Name = (string)reader["test_name"];
+ 54                 test.Description = (string)reader["test_description"];
+ 55                 test.Visibility = (Visibility)reader["test_visibility"];
+ 56                 test.LastAttemptDate = (DateTime)reader["last_attempt_date"];
+ 57                 test.AttemptsAmount = (int)reader["attempts_count"];
+ 58                 tests.Add(test);
+ 59             }
+ 60         }
+ 61
+ 62         return (tests, totalRecords);
+ 63     }
+ 64 }
+ 65
+ 66 // GOOD EXAMPLE
+ 67 public class ActivityTestQueryParameters
+ 68 {
+ 69     public int UserId { get; set; }
+ 70     public Visibility? FilterParam { get; set; }
+ 71     public int PageNumber { get; set; } = 1;
+ 72     public int PageSize { get; set; } = 6;
+ 73     public string OrderByProp { get; set; } = "test_id";
+ 74     public string SortOrder { get; set; } = "asc";
+ 75     public string SearchParam { get; set; } = null;
+ 76 }
+ 77
+ 78 public async Task<(List<TestActivityDTO>, int)> GetUserActivityTests(ActivityTestQueryParameters queryParams)
+ 79 {
+ 80     string sqlExpression = "PagingActivity";
+ 81
+ 82     using (SqlConnection connection = new SqlConnection(_connectionString))
+ 83     {
+ 84         List<TestActivityDTO> tests = new();
+ 85         int totalRecords = 0;
+ 86
+ 87         using (SqlCommand command = new SqlCommand(sqlExpression, connection))
+ 88         {
+ 89             command.CommandType = CommandType.StoredProcedure;
+ 90
+ 91             command.Parameters.AddWithValue("@PageNumber", queryParams.PageNumber);
+ 92             command.Parameters.AddWithValue("@PageSize", queryParams.PageSize);
+ 93             command.Parameters.AddWithValue("@OrderBy", queryParams.OrderByProp);
+ 94             command.Parameters.AddWithValue("@SortOrder", queryParams.SortOrder);
+ 95             command.Parameters.AddWithValue("@UserId", queryParams.UserId);
+ 96             command.Parameters.AddWithValue("@FilterParam", queryParams.FilterParam ?? DBNull.Value);
+ 97             command.Parameters.AddWithValue("@SearchParam", !string.IsNullOrEmpty(queryParams.SearchParam) ? queryParams.SearchParam : DBNull.Value);
+ 98
+ 99             SqlParameter totalRecordsParam = new SqlParameter("@TotalRecords", SqlDbType.Int);
+100             totalRecordsParam.Direction = ParameterDirection.Output;
+101             command.Parameters.Add(totalRecordsParam);
+102
+103             connection.Open();
+104             SqlDataReader reader = await command.ExecuteReaderAsync();
+105
+106             if (reader.HasRows)
+107             {
+108                 reader.Read();
+109                 totalRecords = (int)reader["TotalRecords"];
+110             }
+111
+112             reader.NextResult();
+113
+114             while (reader.Read())
+115             {
+116                 TestActivityDTO test = new()
+117                 {
+118                     TestId = (int)reader["test_id"],
+119                     Name = (string)reader["test_name"],
+120                     Description = (string)reader["test_description"],
+121                     Visibility = (Visibility)reader["test_visibility"],
+122                     LastAttemptDate = (DateTime)reader["last_attempt_date"],
+123                     AttemptsAmount = (int)reader["attempts_count"]
+124                 };
+125                 tests.Add(test);
+126             }
+127         }
+128
+129         return (tests, totalRecords);
+130     }
+131 }
+132
+133
+134 // Hide Delegate
+135
+136 // BAD EXAMPLES
+137 public async Task<Result<bool>> EnrollMemberToClass(Enrollment enrollment, CancellationToken ct)
+138 {
+139     var query = @"INSERT INTO Enrollment (class_id, member_id, enrollment_date)
+140                   VALUES (@ClassId, @MemberId, @EnrollmentDate);
+141                   SELECT SCOPE_IDENTITY();";
+142
+143     try
+144     {
+145         // Directly creating and managing the connection
+146         var connectionString = "YourDatabaseConnectionString";
+147         using var connection = new SqlConnection(connectionString);
+148         await connection.OpenAsync(ct);
+149
+150         var isMemberExists = await _memberRepository.IsExists(enrollment.MemberId, ct);
+151         if (!isMemberExists.IsSuccessful || !isMemberExists.Data)
+152         {
+153             return MemberStatuses.MemberNotFound.GetFailureResult<bool>();
+154         }
+155
+156         var enrollmentId = await connection.ExecuteScalarAsync<long>(query, enrollment);
+157
+158         return Result.Success(true);
+159     }
+160     catch (Exception ex)
+161     {
+162         return EnrollmentStatuses.FailToEnrollMemberToClass.GetFailureResult<bool>(ex.Message);
+163     }
+164     finally
+165     {
+166         if (connection.State == ConnectionState.Open)
+167         {
+168             connection.Close();
+169             connection.Dispose();
+170         }
+171     }
+172 }
+173
+174 // GOOD EXAMPLE
+175
+176 // Class with delegate functionality
+177 public class DbProvider : IDbProvider
+178 {
+179     private readonly string _connectionString;
+180     public DbProvider(string connectionString)
+181     {
+182         _connectionString = connectionString;
+183     }
+184
+185     public async Task<IDbConnection> CreateAndOpenConnection(CancellationToken ct)
+186     {
+187         ct.ThrowIfCancellationRequested();
+188
+189         var connection = new SqlConnection(_connectionString);
+190         await connection.OpenAsync(ct);
+191         return connection;
+192     }
+193 }
+194
+195 // Client code
+196 public async Task<Result<bool>> EnrollMemberToClass(Enrollment enrollment, CancellationToken ct)
+197 {
+198     var query = @"INSERT INTO Enrollment (class_id, member_id, enrollment_date)
+199                   VALUES (@ClassId, @MemberId, @EnrollmentDate);
+200                   SELECT SCOPE_IDENTITY();";
+201
+202     try
+203     {
+204         using var connection = await DbProvider.CreateConnection(ct);
+205
+206         var isMemberExists = await _memberRepository.IsExists(enrollment.MemberId, ct);
+207         if (!isMemberExists.IsSuccessful || !isMemberExists.Data)
+208         {
+209             return MemberStatuses.MemberNotFound.GetFailureResult<bool>();
+210         }
+211
+212         var enrollmentId = await connection.ExecuteScalarAsync<long>(query, enrollment);
+213
+214         return Result.Success(true);
+215     }
+216     catch (Exception ex)
+217     {
+218         return EnrollmentStatuses.FailToEnrollMemberToClass.GetFailureResult<bool>(ex.Message);
+219     }
+220 }
+221
+222 // Introduce Local Extension
+223
+224 // BAD EXAMPLE
+225 public class BaseMessage
+226 {
+227     public ChatId? ChatId { get; set; }
+228     public string? Text { get; set; }
+229     public HardFile? File { get; set; }
+230
+231     public BaseMessage(long? chatId)
+232     {
+233         ChatId = chatId.HasValue ? new ChatId(chatId.Value) : null;
+234     }
+235
+236     public BaseMessage(ChatId chatId)
+237     {
+238         ChatId = chatId;
+239     }
+240
+241     public BaseMessage() { }
+242
+243     public BaseMessage(long? chatId, string text) : this(chatId)
+244     {
+245         Text = text;
+246     }
+247
+248     public BaseMessage(long? chatId, string text, HardFile file) : this(chatId, text)
+249     {
+250         File = file;
+251     }
+252 }
+253
+254
+255 // GOOD EXAMPLE
+256
+257 public class BaseMessage
+258 {
+259     public ChatId? ChatId { get; set; }
+260
+261     public BaseMessage(long? chatId)
+262     {
+263         ChatId = chatId.HasValue ? new ChatId(chatId.Value) : null;
+264     }
+265     public BaseMessage(ChatId chatId)
+266     {
+267         ChatId = chatId;
+268     }
+269
+270     public BaseMessage() { }
+271 }
+272
+273 public class TextMessage : BaseMessage
+274 {
+275     public TextMessage(long? chatId) : base(chatId) { }
+276     public TextMessage() { }
+277
+278     public string Text { get; set; }
+279 }
+280
+281 public class DocumentMessage : TextMessage
+282 {
+283     public DocumentMessage(long? chatId)
+284     : base(chatId) { }
+285
+286     public HardFile File { get; set; }
+
+ДОДАТОК Б
+
+Слайди презентації
+
+
+Рисунок Б.1 – Титульна сторінка
+
+
+Рисунок Б.2 – Вступ
+
+
+Рисунок Б.3 – Introduce Parameter Object
+
+
+Рисунок Б.4 – Introduce Parameter Object. Приклад
+
+
+Рисунок Б.5 – Introduce Parameter Object. Приклад
+
+
+Рисунок Б.6 – Introduce Parameter Object. Переваги
+
+
+Рисунок Б.7 – Hide delegate
+
+
+Рисунок Б.8 – Hide delegate. Приклад
+
+
+Рисунок Б.9 – Hide delegate. Приклад
+
+
+
+Рисунок Б.10 – Hide delegate. Приклад
+
+
+Рисунок Б.11 – Introduce Local Extension
+
+
+
+Рисунок Б.12 – Introduce Local Extension
+
+
+Рисунок Б.13 – Introduce Local Extension
+
+
+Рисунок Б.14 – Introduce Local Extension. Приклад
+
+
+Рисунок Б.15 – Introduce Local Extension. Приклад
+
+
+Рисунок Б.16 – Introduce Local Extension. Переваги
+
+
+Рисунок Б.17 –Висновки
+
+
+
+Рисунок Б.18 – Використані джерела
+
+
+
+
+
+
+2
+
+
